@@ -1,13 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Wedding Invitation</title>
+  <meta charset="UTF-8" />
+  <title>Wedding Invite</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Inter:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f8f8f6;
+      color: #444;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      letter-spacing: 2px;
+    }
+
+    .names {
+      margin: 40px 0;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .fade:nth-child(2) { animation-delay: 0.5s; }
+    .fade:nth-child(3) { animation-delay: 1s; }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .guest {
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+  </style>
 </head>
+
 <body>
-    <h1>You are invited to our Wedding!</h1>
-    <p>Join us on April 10, 2026, for a celebration of love.</p>
-    <p>Time: 3:30 PM UTC</p>
-    <p>Location: Our beautiful venue</p>
-    <p>Please RSVP by March 1, 2026.</p>
+  <div class="container">
+
+    <p class="guest fade">Dear <span id="guestName">Guest</span>,</p>
+
+    <p class="fade">You are joyfully invited to the wedding of</p>
+
+    <div class="names fade">
+      <h1>Jenny Hu</h1>
+      <p>and</p>
+      <h1>Peter Tian</h1>
+    </div>
+
+    <p class="fade">
+      Sunday, September 6, 2026<br/>
+      5:30 in the evening
+    </p>
+
+    <p class="fade">
+      The Philander Chase Knox Estate<br/>
+      Malvern, PA
+    </p>
+
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const guest = params.get("guest");
+
+    if (guest) {
+      document.getElementById("guestName").textContent = guest;
+    }
+  </script>
+
 </body>
 </html>
